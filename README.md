@@ -25,6 +25,16 @@
 
 程式每次啟動都會檢查有沒有新版本。有新版時，畫面上方會出現提示，按「立即更新」，程式會自動下載、驗證、更新並重新啟動。
 
+## 常見問題
+
+**v1.0.0 啟動時出現「Failed to resolve Python.Runtime.Loader.Initialize」**
+
+原因是 Windows 把下載的檔案標記為「來自網際網路」，舊版程式因此無法載入元件。請改用 v1.0.1 以後的版本（已自動處理這個問題）。如果要繼續使用 v1.0.0，請在 PowerShell 執行以下指令解除封鎖：
+
+```powershell
+Get-ChildItem "<解壓縮的資料夾>" -Recurse | Unblock-File
+```
+
 ## 檔案驗證
 
 每個版本都附有 `.sha256` 檔。可以在 PowerShell 執行下面的指令，確認下載的檔案沒有被修改過：
